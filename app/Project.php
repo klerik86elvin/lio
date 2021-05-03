@@ -10,7 +10,6 @@ class Project extends Model
     use SoftDeletes;
 
     protected $fillable = ['name'];
-    protected $with = ['department'];
     protected $hidden = ['department_id', 'created_at', 'deleted_at', 'updated_at'];
     public function department()
     {
