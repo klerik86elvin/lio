@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\CommentRequest;
 use App\Http\Requests\TaskRequest;
 use App\Policies\TaskPolicy;
+use App\Project;
 use App\Task;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -38,7 +39,7 @@ class TaskController extends Controller
      */
     public function store(TaskRequest $request)
     {
-        Task::create($request->only(['name', 'text','assigned_to','deadline']));
+        Task::create($request->only(['name', 'text','assigned_to','deadline','project_id']));
 
         return response()->json(['message' => 'success'], 200);
     }
@@ -76,9 +77,10 @@ class TaskController extends Controller
             $this->validate($request,[
                 'name' => ['required'],
                 'text' => ['required'],
-                'assigned_to' => ['nullable', Rule::in(Employee::all()->pluck('id'))]
+                'assigned_to' => ['nullable', Rule::in(Employee::all()->pluck('id'))],
+                'project_id' => ['nullable', Rule::in(Project::all()->pluck('id'))]
             ]);
-            $t->update($request->only(['name', 'text', 'assigned_to']));
+            $t->update($request->only(['name', 'text', 'assigned_to', 'project_id']));
             return response()->json(['message' => 'success', 'data' => $t], 200);
         } else {
             return response()->json(['message' => $response->message()], 403);
