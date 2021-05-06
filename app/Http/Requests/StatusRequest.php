@@ -2,12 +2,9 @@
 
 namespace App\Http\Requests;
 
-use App\Department;
-use App\Status;
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Validation\Rule;
 
-class ProjectRequest extends FormRequest
+class StatusRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -27,12 +24,7 @@ class ProjectRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => ['required'],
-            'department' => [
-                'nullable',
-                Rule::in(Department::all()->pluck('id'))
-                ],
-            'status_id' => Rule::in(Status::all()->pluck('id')),
+            'name' => ['required', 'unique:statuses']
         ];
     }
 }

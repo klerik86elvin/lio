@@ -11,6 +11,7 @@ class Project extends Model
 
     protected $fillable = ['name'];
     protected $hidden = ['department_id', 'created_at', 'deleted_at', 'updated_at'];
+    protected $with = ['statuses'];
     public function department()
     {
         return $this->belongsTo(Department::class);
@@ -19,5 +20,10 @@ class Project extends Model
     public function tasks()
     {
         return $this->hasMany(Task::class);
+    }
+
+    public function statuses()
+    {
+        return $this->belongsToMany(Status::class);
     }
 }

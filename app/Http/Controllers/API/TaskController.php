@@ -39,7 +39,7 @@ class TaskController extends Controller
      */
     public function store(TaskRequest $request)
     {
-        Task::create($request->only(['name', 'text','assigned_to','deadline','project_id']));
+        Task::create($request->only(['name', 'text','assigned_to','deadline','project_id','status_id']));
 
         return response()->json(['message' => 'success'], 200);
     }

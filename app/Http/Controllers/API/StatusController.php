@@ -3,6 +3,10 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Status\Create;
+use App\Http\Requests\Status\Update;
+use App\Http\Requests\StatusRequest;
+use App\Status;
 use Illuminate\Http\Request;
 
 class StatusController extends Controller
@@ -14,7 +18,18 @@ class StatusController extends Controller
      */
     public function index()
     {
-        //
+        $data = [
+            'message' => 'success',
+            'data' => null,
+        ];
+
+        $statuses = Status::all();
+
+        $data['data'] = $statuses;
+
+        return response()->json($data, 200);
+
+
     }
 
     /**
@@ -23,9 +38,18 @@ class StatusController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StatusRequest $request)
     {
-        //
+        $data = [
+            'message' => 'success',
+            'data' => null,
+        ];
+
+        $status = Status::create($request->only(['name']));
+
+        $data['status'] = $status;
+
+        return response()->json($data, 200);
     }
 
     /**
@@ -36,7 +60,16 @@ class StatusController extends Controller
      */
     public function show($id)
     {
-        //
+        $data = [
+            'message' => 'success',
+            'data' => null,
+        ];
+
+        $status = Status::findOrFail($id);
+
+        $data['data'] = $status;
+
+        return response()->json($data, 200);
     }
 
     /**
@@ -46,9 +79,21 @@ class StatusController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(StatusRequest $request, $id)
     {
-        //
+        $data = [
+            'message' => 'success',
+            'data' => null,
+        ];
+
+        $status = Status::findOrFail($id);
+
+        $status->update($request->only(['name']));
+
+        $data['data'] = $status;
+
+        return response()->json($data, 200);
+
     }
 
     /**
@@ -59,6 +104,15 @@ class StatusController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $status = Status::findOrFail($id);
+
+        $status->delete();
+
+        $data = [
+            'message' => 'success',
+            'data' => null
+        ];
+
+        return response()->json($data, 200);
     }
 }

@@ -9,7 +9,7 @@ class Task extends Model
 {
     use SoftDeletes;
 
-    protected $fillable = ['name', 'text', 'deadline', 'created_by', 'assigned_to','project_id'];
+    protected $fillable = ['name', 'text', 'deadline', 'created_by', 'assigned_to','project_id', 'status_id'];
 
     protected $dates = ['deadline'];
 
@@ -38,7 +38,7 @@ class Task extends Model
 
     public function status()
     {
-        return $this->belongsTo(Comment::class);
+        return $this->belongsTo(Status::class);
     }
 
     public function project()

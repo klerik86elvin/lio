@@ -55,6 +55,7 @@ Route::apiResources([
     'project' => 'API\ProjectController',
     'department' => 'API\DepartmentController',
     'task' => 'API\TaskController',
+    'status' => 'API\StatusController'
 
 ]);
 

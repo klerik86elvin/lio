@@ -43,6 +43,7 @@ class ProjectController extends Controller
         ]);
 
         $pro->department()->associate($dep);
+        $pro->statuses()->attach($request->status_id);
         $pro->save();
 
         if ($pro)
@@ -88,9 +89,10 @@ class ProjectController extends Controller
         $project->update([
             'name' => $request->name,
         ]);
-        $a = Department::find($request->department);
+        $department = Department::find($request->department);
 
-        $project->department()->associate($a);
+        $project->department()->associate($department);
+        $project->statuses()->sync($request->status_id);
         $project->save();
         return response()->json($data, 200);
     }
