@@ -9,6 +9,7 @@ use App\Http\Requests\CommentRequest;
 use App\Http\Requests\TaskRequest;
 use App\Policies\TaskPolicy;
 use App\Project;
+use App\Status;
 use App\Task;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -29,6 +30,12 @@ class TaskController extends Controller
      */
     public function index()
     {
+        $data = [
+            'message' => 'success',
+            'data' => Task::all(),
+        ];
+
+        return response()->json($data, 200);
     }
 
     /**
@@ -78,11 +85,13 @@ class TaskController extends Controller
                 'name' => ['required'],
                 'text' => ['required'],
                 'assigned_to' => ['nullable', Rule::in(Employee::all()->pluck('id'))],
-                'project_id' => ['nullable', Rule::in(Project::all()->pluck('id'))]
+                'project_id' => ['nullable', Rule::in(Project::all()->pluck('id'))],
+                'status_id' => ['nullable', Rule::in(Status::all()->pluck('id'))],
             ]);
-            $t->update($request->only(['name', 'text', 'assigned_to', 'project_id']));
+            $t->update($request->only(['name', 'text', 'assigned_to', 'project_id', 'status_id']));
             return response()->json(['message' => 'success', 'data' => $t], 200);
         } else {
+//            return 'ok';
             return response()->json(['message' => $response->message()], 403);
         }
     }

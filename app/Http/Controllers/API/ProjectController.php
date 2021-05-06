@@ -6,6 +6,7 @@ use App\Department;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ProjectRequest;
 use App\Project;
+use App\Status;
 use Illuminate\Http\Request;
 
 class ProjectController extends Controller
@@ -19,7 +20,7 @@ class ProjectController extends Controller
     {
         $data = [
             'message' => 'success',
-            'data' => Project::all(),
+            'data' => Project::with('statuses.tasks')->get()
         ];
 
         return response()->json($data, 200);
