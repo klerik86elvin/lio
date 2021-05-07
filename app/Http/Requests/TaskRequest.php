@@ -28,7 +28,6 @@ class TaskRequest extends FormRequest
     {
         return [
             'name' => ['required'],
-            'text' => ['required'],
             'assigned_to' => ['nullable', Rule::in(Employee::all()->pluck('id'))],
             'deadline' => ['nullable', 'date_format:d-m-Y','after:today'],
             'project_id' => ['nullable', Rule::in(Project::all()->pluck('id'))],
