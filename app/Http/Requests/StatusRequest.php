@@ -2,7 +2,9 @@
 
 namespace App\Http\Requests;
 
+use App\Project;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class StatusRequest extends FormRequest
 {
@@ -24,7 +26,8 @@ class StatusRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => ['required', 'unique:statuses']
+            'name' => ['required'],
+            'project_id' => ['required', Rule::in(Project::all()->pluck('id'))]
         ];
     }
 }

@@ -27,7 +27,7 @@ class Status extends Model
             'id' => $this->id,
             'name' => $this->name,
 //            'project_id' => $this->pivot->project_id,
-            'tasks' => $this->tasks()->where('project_id', $this->pivot->project_id)->get()
+            'tasks' => $this->tasks()->where('project_id', @$this->pivot->project_id)->get()
         ];
     }
 }
