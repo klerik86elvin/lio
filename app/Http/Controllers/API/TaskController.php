@@ -82,7 +82,7 @@ class TaskController extends Controller
 
         if ($response->allowed()) {
             $this->validate($request,[
-                'text' => ['required'],
+                'name' => ['required'],
                 'assigned_to' => ['nullable', Rule::in(Employee::all()->pluck('id'))],
                 'project_id' => ['nullable', Rule::in(Project::all()->pluck('id'))],
                 'status_id' => ['nullable', Rule::in(Status::all()->pluck('id'))],
