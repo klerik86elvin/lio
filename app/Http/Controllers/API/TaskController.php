@@ -46,9 +46,9 @@ class TaskController extends Controller
      */
     public function store(TaskRequest $request)
     {
-        Task::create($request->only(['name', 'text','assigned_to','deadline','project_id','status_id']));
+       $data = Task::create($request->only(['name', 'text','assigned_to','deadline','project_id','status_id']));
 
-        return response()->json(['message' => 'success'], 200);
+       return response()->json(['message' => 'success', 'data' => $data], 200);
     }
 
     /**
