@@ -35,6 +35,7 @@ Route::group([
 });
 
 Route::post('employee/login', 'EmployeeController@login');
+Route::post('employee/logout', 'EmployeeController@logout');
 Route::post('employee/registration', 'EmployeeController@registration');
 Route::post('employee/me', 'EmployeeController@me');
 Route::put('employee', 'EmployeeController@update');
