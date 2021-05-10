@@ -123,4 +123,17 @@ class ProjectController extends Controller
 
         return response()->json(['message' => 'success', 'data' => $project]);
     }
+
+    public function detachStatus($id, $status_id)
+    {
+        $data = [
+            'message' => 'success',
+        ];
+        $project = Project::findOrFail($id);
+
+        $project->statuses()->detach($status_id);
+
+        return response()->json($data, 200);
+    }
+
 }
