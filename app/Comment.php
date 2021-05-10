@@ -8,7 +8,8 @@ class Comment extends Model
 {
     protected $fillable = ['text', 'employee_id'];
 
-    protected $with = ['employee'];
+    protected $appends = ['emp'];
+
 
     public function task()
     {
@@ -18,5 +19,10 @@ class Comment extends Model
     public function employee()
     {
         return $this->belongsTo(Employee::class);
+    }
+
+    public function getEmpAttribute()
+    {
+        return $this->employee()->first();
     }
 }
