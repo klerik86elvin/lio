@@ -8,8 +8,15 @@ class Comment extends Model
 {
     protected $fillable = ['text', 'employee_id'];
 
+    protected $with = ['employee'];
+
     public function task()
     {
         return $this->belongsTo(Task::class);
+    }
+
+    public function employee()
+    {
+        return $this->belongsTo(Employee::class);
     }
 }

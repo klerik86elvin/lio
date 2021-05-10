@@ -48,4 +48,9 @@ class Employee extends Authenticatable implements JWTSubject
         return $this->belongsTo(Department::class);
     }
 
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
+    }
+
 }

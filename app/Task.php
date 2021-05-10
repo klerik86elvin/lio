@@ -16,9 +16,12 @@ class Task extends Model
     protected $casts = [
         'deadline' => 'date:d-m-y',
     ];
+
+    protected $with = ['comments'];
 //    protected $hidden = [
 //        'created_by','assigned_to','deleted_at','updated_at'
 //    ];
+
 
 
     public function createdBy()
