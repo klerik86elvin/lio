@@ -12,7 +12,6 @@ class Employee extends Authenticatable implements JWTSubject
     use Notifiable;
     protected $fillable = ['name','surname','login','password'];
     protected $table = 'employees';
-    protected $with = ['department'];
 
     protected $hidden = [
         'password', 'remember_token', 'created_at', 'updated_at', 'email_verified_at', 'department_id'
