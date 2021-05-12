@@ -14,7 +14,7 @@ class Employee extends Authenticatable implements JWTSubject
     protected $table = 'employees';
 
     protected $hidden = [
-        'password', 'remember_token', 'created_at', 'updated_at', 'email_verified_at', 'department_id'
+        'password', 'remember_token', 'created_at', 'updated_at', 'email_verified_at'
     ];
 
     public function getJWTIdentifier()
@@ -51,5 +51,6 @@ class Employee extends Authenticatable implements JWTSubject
     {
         return $this->hasMany(Comment::class);
     }
+
 
 }
