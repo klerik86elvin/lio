@@ -87,7 +87,7 @@ class TaskController extends Controller
                 'project_id' => ['nullable', Rule::in(Project::all()->pluck('id'))],
                 'status_id' => ['nullable', Rule::in(Status::all()->pluck('id'))],
             ]);
-            $t->update($request->only(['name', 'text', 'assigned_to', 'project_id', 'status_id']));
+            $t->update($request->only(['name', 'text', 'assigned_to', 'project_id', 'status_id','deadline']));
             return response()->json(['message' => 'success', 'data' => $t], 200);
         } else {
 //            return 'ok';
@@ -112,7 +112,7 @@ class TaskController extends Controller
 
         $c->save();
 
-        return response()->json(['message' => 'success'], 200);
+        return response()->json(['message' => 'success','data' => $c], 200);
     }
 
     public function getComments($task_id)
