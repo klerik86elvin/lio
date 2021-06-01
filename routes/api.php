@@ -43,6 +43,7 @@ Route::get('employee/created-tasks', 'EmployeeController@getCreatedTasks');
 Route::get('employee/assigned-tasks', 'EmployeeController@getAssignedTasks');
 Route::post('task/{task_id}/comments', 'API\TaskController@addComment');
 Route::get('task/{task_id}/comments', 'API\TaskController@getComments');
+Route::get('task/filter/{field}', 'API\TaskController@filter');
 Route::delete('project/{id}/status/{status_id}', 'API\ProjectController@detachStatus');
 
 Route::group([

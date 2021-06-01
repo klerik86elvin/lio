@@ -128,4 +128,20 @@ class TaskController extends Controller
 
         return response()->json(['message' => 'success'], 200);
     }
+
+    public function filter($field)
+    {
+        if ($field == "created_at")
+        {
+            $user = auth()->guard('employee_api')->user()->assignedTasks()->orderBy($field,'DESC')->get();
+            return response()->json(['message' => 'success', 'data' => $user], 200);
+        }
+        else if ($field == "deadline")
+        {
+            $user = auth()->guard('employee_api')->user()->assignedTasks()->orderBy($field,'ASC')->get();
+            return response()->json(['message' => 'success', 'data' => $user], 200);
+        }
+
+
+    }
 }

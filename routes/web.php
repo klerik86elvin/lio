@@ -18,11 +18,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     if(auth()->guard('employee_api')->check())
     {
-//        $user = auth()->guard('employee_api')->user()->name;
-//        \App\Jobs\SendMail::dispatch($user)->delay(now()->addSeconds(4));
+
+       return $user;
     }
-//    return 'ok';
-//    Mail::to('elvin.m9292@gmail.com')->send(new AssignedToMessage());
 });
 
 Auth::routes();
