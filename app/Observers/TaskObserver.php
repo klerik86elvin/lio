@@ -2,6 +2,8 @@
 
 namespace App\Observers;
 
+use App\Employee;
+use App\Jobs\SendMail;
 use App\Task;
 
 class TaskObserver
@@ -15,6 +17,7 @@ class TaskObserver
     public function created(Task $task)
     {
         $task->created_by = auth()->guard('employee_api')->id();
+
         $task->save();
     }
 
@@ -26,7 +29,12 @@ class TaskObserver
      */
     public function updated(Task $task)
     {
-        //
+        if($task->isDirty('assigned_to')):
+            $user = auth()->guard('employee_api')->user()->name;
+            $assignedUser = Employee::find($task->assigned_to);
+            SendMail::dispatch($assignedUser->email,$user);
+        endif;
+
     }
 
     /**

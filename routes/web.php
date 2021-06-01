@@ -1,5 +1,7 @@
 <?php
 
+use App\Mail\AssignedToMessage;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,7 +16,13 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    if(auth()->guard('employee_api')->check())
+    {
+//        $user = auth()->guard('employee_api')->user()->name;
+//        \App\Jobs\SendMail::dispatch($user)->delay(now()->addSeconds(4));
+    }
+//    return 'ok';
+//    Mail::to('elvin.m9292@gmail.com')->send(new AssignedToMessage());
 });
 
 Auth::routes();
