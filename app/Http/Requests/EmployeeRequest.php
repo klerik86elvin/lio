@@ -28,7 +28,8 @@ class EmployeeRequest extends FormRequest
         return [
             'login' => ['required', 'unique:employees'],
             'password' => ['required'],
-            'dep_id' => ['nullable', Rule::in(Department::all()->pluck('id'))]
+            'dep_id' => ['nullable', Rule::in(Department::all()->pluck('id'))],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:employees'],
         ];
     }
 }

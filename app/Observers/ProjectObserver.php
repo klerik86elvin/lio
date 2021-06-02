@@ -19,6 +19,7 @@ class ProjectObserver
             ['name' => 'Open'],
             ['name' => 'In Progress'],
             ['name' => 'done'],
+            ['name' => 'Layihəyə aid olan sənədlər']
         ]);
     }
 
