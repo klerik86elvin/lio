@@ -16,11 +16,11 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    if(auth()->guard('employee_api')->check())
-    {
-
-       return $user;
-    }
+    $tasks = \App\Task::where('deadline', '<=' , \Carbon\Carbon::now()->addHours(24))
+        ->where("notification_sent", false)
+        ->whereNotNull('assigned_to')
+        ->get();
+    return $tasks;
 });
 
 Auth::routes();

@@ -2,6 +2,8 @@
 
 namespace App\Console;
 
+use App\Employee;
+use App\Jobs\Notice24HoursJob;
 use App\Status;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
@@ -26,8 +28,18 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
         $schedule->call(function (){
-           Status::all()->delete();
-        });
+            $tasks = \App\Task::where('deadline', '<' , \Carbon\Carbon::now()
+                ->addHours(24))
+                ->where("notification_sent", false)
+                ->whereNotNull('assigned_to')
+                ->get();
+            foreach ($tasks as $task) {
+                $emp = Employee::find($task->assigned_to);
+                Notice24HoursJob::dispatch($emp->email);
+                $task->notification_sent = true;
+                $task->save();
+            }
+        })->everyMinute();
         // $schedule->command('inspire')->hourly();
     }
 
