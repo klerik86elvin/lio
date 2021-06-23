@@ -86,8 +86,9 @@ class TaskController extends Controller
                 'assigned_to' => ['nullable', Rule::in(Employee::all()->pluck('id'))],
                 'project_id' => ['nullable', Rule::in(Project::all()->pluck('id'))],
                 'status_id' => ['nullable', Rule::in(Status::all()->pluck('id'))],
+                'completed' => ['nullable']
             ]);
-            $t->update($request->only(['name', 'text', 'assigned_to', 'project_id', 'status_id','deadline']));
+            $t->update($request->only(['name', 'text', 'assigned_to', 'project_id', 'status_id','deadline','completed']));
             return response()->json(['message' => 'success', 'data' => $t], 200);
         } else {
 //            return 'ok';

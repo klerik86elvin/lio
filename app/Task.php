@@ -9,7 +9,7 @@ class Task extends Model
 {
     use SoftDeletes;
 
-    protected $fillable = ['name', 'text', 'deadline', 'created_by', 'assigned_to','project_id', 'status_id'];
+    protected $fillable = ['name', 'text', 'deadline', 'created_by', 'assigned_to','project_id', 'status_id', 'completed'];
 
     protected $dates = ['deadline'];
 

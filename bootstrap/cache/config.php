@@ -2,15 +2,15 @@
   'app' => 
   array (
     'name' => 'Laravel',
-    'env' => 'prod',
-    'debug' => false,
+    'env' => 'local',
+    'debug' => true,
     'url' => 'http://localhost',
     'asset_url' => NULL,
     'timezone' => 'UTC',
     'locale' => 'en',
     'fallback_locale' => 'en',
     'faker_locale' => 'en_US',
-    'key' => 'base64:7ptHenJ5gsH/Y8TYs2YTAVuUA6/GzdJpbpfXzwXsCU8=',
+    'key' => 'base64:gs85T1fa65WBfTuH3QkClGF3N1gPnC3vyFzt0HxPn8w=',
     'cipher' => 'AES-256-CBC',
     'providers' => 
     array (
@@ -196,7 +196,7 @@
       'file' => 
       array (
         'driver' => 'file',
-        'path' => 'D:\\xampp\\htdocs\\JWT\\storage\\framework/cache/data',
+        'path' => '/home/elvir/Desktop/lio/storage/framework/cache/data',
       ),
       'memcached' => 
       array (
@@ -273,7 +273,7 @@
       array (
         'driver' => 'sqlite',
         'url' => NULL,
-        'database' => 'jwt',
+        'database' => 'lio',
         'prefix' => '',
         'foreign_key_constraints' => true,
       ),
@@ -282,10 +282,10 @@
         'driver' => 'mysql',
         'url' => NULL,
         'host' => '127.0.0.1',
-        'port' => '3307',
-        'database' => 'jwt',
+        'port' => '3306',
+        'database' => 'lio',
         'username' => 'root',
-        'password' => '',
+        'password' => 'Sensen1997',
         'unix_socket' => '',
         'charset' => 'utf8mb4',
         'collation' => 'utf8mb4_unicode_ci',
@@ -302,10 +302,10 @@
         'driver' => 'pgsql',
         'url' => NULL,
         'host' => '127.0.0.1',
-        'port' => '3307',
-        'database' => 'jwt',
+        'port' => '3306',
+        'database' => 'lio',
         'username' => 'root',
-        'password' => '',
+        'password' => 'Sensen1997',
         'charset' => 'utf8',
         'prefix' => '',
         'prefix_indexes' => true,
@@ -317,10 +317,10 @@
         'driver' => 'sqlsrv',
         'url' => NULL,
         'host' => '127.0.0.1',
-        'port' => '3307',
-        'database' => 'jwt',
+        'port' => '3306',
+        'database' => 'lio',
         'username' => 'root',
-        'password' => '',
+        'password' => 'Sensen1997',
         'charset' => 'utf8',
         'prefix' => '',
         'prefix_indexes' => true,
@@ -362,12 +362,12 @@
       'local' => 
       array (
         'driver' => 'local',
-        'root' => 'D:\\xampp\\htdocs\\JWT\\storage\\app',
+        'root' => '/home/elvir/Desktop/lio/storage/app',
       ),
       'public' => 
       array (
         'driver' => 'local',
-        'root' => 'D:\\xampp\\htdocs\\JWT\\storage\\app/public',
+        'root' => '/home/elvir/Desktop/lio/storage/app/public',
         'url' => 'http://localhost/storage',
         'visibility' => 'public',
       ),
@@ -384,7 +384,7 @@
     ),
     'links' => 
     array (
-      'D:\\xampp\\htdocs\\JWT\\public\\storage' => 'D:\\xampp\\htdocs\\JWT\\storage\\app/public',
+      '/home/elvir/Desktop/lio/public/storage' => '/home/elvir/Desktop/lio/storage/app/public',
     ),
   ),
   'hashing' => 
@@ -403,7 +403,7 @@
   ),
   'jwt' => 
   array (
-    'secret' => 'omle1vI5fE1USvnRQkOUP54ux6vgnV3gGFxs1BNkJQ5TnFKd6Qc3FdI9FRUineT0',
+    'secret' => '8ww9FPxn1F5abWzMcBhtutIYJNRCtcjXSh5qvzAgjXkD8cwMqVPsmcNbBvUJ33Ak',
     'keys' => 
     array (
       'public' => NULL,
@@ -454,13 +454,13 @@
       'single' => 
       array (
         'driver' => 'single',
-        'path' => 'D:\\xampp\\htdocs\\JWT\\storage\\logs/laravel.log',
+        'path' => '/home/elvir/Desktop/lio/storage/logs/laravel.log',
         'level' => 'debug',
       ),
       'daily' => 
       array (
         'driver' => 'daily',
-        'path' => 'D:\\xampp\\htdocs\\JWT\\storage\\logs/laravel.log',
+        'path' => '/home/elvir/Desktop/lio/storage/logs/laravel.log',
         'level' => 'debug',
         'days' => 14,
       ),
@@ -510,7 +510,7 @@
       ),
       'emergency' => 
       array (
-        'path' => 'D:\\xampp\\htdocs\\JWT\\storage\\logs/laravel.log',
+        'path' => '/home/elvir/Desktop/lio/storage/logs/laravel.log',
       ),
     ),
   ),
@@ -559,7 +559,7 @@
     ),
     'from' => 
     array (
-      'address' => 'admin@mail.ru',
+      'address' => 'admin@email.com',
       'name' => 'Laravel',
     ),
     'markdown' => 
@@ -567,13 +567,13 @@
       'theme' => 'default',
       'paths' => 
       array (
-        0 => 'D:\\xampp\\htdocs\\JWT\\resources\\views/vendor/mail',
+        0 => '/home/elvir/Desktop/lio/resources/views/vendor/mail',
       ),
     ),
   ),
   'queue' => 
   array (
-    'default' => 'database',
+    'default' => 'sync',
     'connections' => 
     array (
       'sync' => 
@@ -646,7 +646,7 @@
     'lifetime' => '120',
     'expire_on_close' => false,
     'encrypt' => false,
-    'files' => 'D:\\xampp\\htdocs\\JWT\\storage\\framework/sessions',
+    'files' => '/home/elvir/Desktop/lio/storage/framework/sessions',
     'connection' => NULL,
     'table' => 'sessions',
     'store' => NULL,
@@ -666,9 +666,9 @@
   array (
     'paths' => 
     array (
-      0 => 'D:\\xampp\\htdocs\\JWT\\resources\\views',
+      0 => '/home/elvir/Desktop/lio/resources/views',
     ),
-    'compiled' => 'D:\\xampp\\htdocs\\JWT\\storage\\framework\\views',
+    'compiled' => '/home/elvir/Desktop/lio/storage/framework/views',
   ),
   'flare' => 
   array (
