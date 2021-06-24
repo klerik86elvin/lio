@@ -45,7 +45,7 @@ class StatusController extends Controller
             'data' => null,
         ];
 
-        $status = Status::firstOrCreate($request->only(['name']));
+        $status = Status::firstOrCreate($request->only(['name','color']));
 
 
         $status->projects()->syncWithoutDetaching($request->project_id);

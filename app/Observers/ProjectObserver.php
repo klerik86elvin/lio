@@ -16,10 +16,10 @@ class ProjectObserver
     public function created(Project $project)
     {
         $project->statuses()->createMany([
-            ['name' => 'Open'],
-            ['name' => 'In Progress'],
-            ['name' => 'done'],
-            ['name' => 'Layihəyə aid olan sənədlər']
+            ['name' => 'Open', 'color' => 'rgb(152, 170, 179)'],
+            ['name' => 'In Progress', 'color' => 'rgb(0, 170, 255)'],
+            ['name' => 'done', 'color' => 'rgb(71, 204, 138)'],
+            ['name' => 'Layihəyə aid olan sənədlər', 'color' => 'rgb(48, 191, 191)']
         ]);
     }
 

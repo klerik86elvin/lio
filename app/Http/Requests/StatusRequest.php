@@ -27,6 +27,7 @@ class StatusRequest extends FormRequest
     {
         return [
             'name' => ['required'],
+            'color' => ['required'],
             'project_id' => ['required', Rule::in(Project::all()->pluck('id'))]
         ];
     }

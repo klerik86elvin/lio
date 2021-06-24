@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Status extends Model
 {
-    protected $fillable = ['name'];
+    protected $fillable = ['name','color'];
 
     protected $hidden = ['created_at', 'updated_at'];
 
@@ -26,6 +26,7 @@ class Status extends Model
         return [
             'id' => $this->id,
             'name' => $this->name,
+            'color' => $this->color,
 //            'project_id' => $this->pivot->project_id,
             'tasks' => $this->tasks()->where('project_id', @$this->pivot->project_id)->get()
         ];
